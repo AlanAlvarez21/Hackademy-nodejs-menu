@@ -6,28 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Images</title>
+<!-- -->
     <%- include("partials/head") -%>
 </head>
 
 <body>
+<!-- -->
 
     <%- include("partials/navigation") %>
+<!-- Imprime una matriz con el arreglo de imagenes  estilo card-colums de bootstrap -->
 
     <div class="container p-4">
         <div class="row">
             <div class="card-columns">
-
                 <% images.forEach(function(image) { %>
-
-                <div class="card animated fadeInDown">
+                <!-- Utiliza el método fadeIn de animate.css -->
+                <div class="card animated fadeIn">
+                    <!-- Se pide la direccion de la imagen y la imprime -->
                     <img src="<%= image.path %>" class="card-img-top" alt="<%= image.filename %>">
                     <div class="card-body">
-                        <h5 class="card-title"><%= image.title %></h5>
+                        <!-- Dentro de la imagen que se está iterando se pide la propiedad titulo y description-->
+                        <h6 class="card-title"><%= image.title %></h6>
                         <p class="card-text"><%= image.description %></p>
+                        <!-- Se imprime la propiedad created_at la cúal imprime la fecha de creación, y se le da formato -->
+                        <p class="card-text"><%= format(image.created_at) %></p>
+                        <!-- Se colocá un boton para ver un formulario de la imagen-->
                         <a href="/image/<%= image._id %>" class="btn btn-primary">
                            View 
                         </a>
                     </div>
+                </div>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+<!-- Imprime imagenes solamente sin ninguna información -->
+    <div class="container p-4">
+        <div class="row">
+            <div class="card-columns">
+                <% images.forEach(function(image) { %>
+                <div class="card animated fadeInDown">
+                    <img src="<%= image.path %>" class="card-img" alt="<%= image.filename %>">
                 </div>
                 <% }) %>
             </div>

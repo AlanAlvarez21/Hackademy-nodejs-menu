@@ -3,9 +3,14 @@ const path = require('path');
 const morgan = require('morgan');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
+const { format } = require('timeago.js')
+
+
 // Initializations 
 const app = express();
-require('./database');
+require('./database'); // Inicializa 
+
+
 // Settings
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views')); // Se especifica donde está la carpeta views 
@@ -25,8 +30,11 @@ const storage = multer.diskStorage({
 app.use(multer({storage: storage}).single('image')); // Configura el directorio donde multer va a guardar imagenes 
 
 
-
 //Global Variables
+app.use((req,res,next) => {
+    app.locals.format = format;
+    next();
+});
 
 //Routes
 app.use(require('./routes/index'));
@@ -37,5 +45,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Start server
 app.listen(app.get('port'), () => {
-    console.log(`Server on port ${app.get('port')}`);
+    console.log(`Server on port: '${app.get('port')}'`);
 });

@@ -6,7 +6,7 @@ const Image = require('../models/Image');
 
 router.get('/', async (req, res) => {
     const images = await Image.find();
-    console.log(images);
+    console.log(images);             // Imprime el objeto con el arreglo de la base de datos 
     res.render('index', { images }); // renderiza index.js en la raiz del server 
 });
 
