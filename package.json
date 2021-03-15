@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alan Daniel Alvarez Castro",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.25.0",
