@@ -5,7 +5,7 @@ const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
 // Initializations 
 const app = express();
-
+require('./database');
 // Settings
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname,'views')); // Se especifica donde está la carpeta views 
