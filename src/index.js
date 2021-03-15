@@ -33,6 +33,7 @@ app.use(require('./routes/index'));
 
 
 //Static Files
+app.use(express.static(path.join(__dirname, 'public')));
 
 //Start server
 app.listen(app.get('port'), () => {

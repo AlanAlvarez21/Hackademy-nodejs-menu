@@ -6,10 +6,12 @@ const Image = require('../models/Image');
 
 router.get('/', async (req, res) => {
     const images = await Image.find();
+    console.log(images);
+    res.render('index', { images }); // renderiza index.js en la raiz del server 
 });
 
 
-router.get('/upload', (req, res) => { // Ruta ver imagenes imagenes 
+router.get('/upload/', (req, res) => { // Ruta ver imagenes imagenes 
     res.render('upload');
 });
 
@@ -17,13 +19,13 @@ router.get('/image/:id', (req, res) => { // Ruta ver una determinada imagen
     res.send('Profile Image');
 });
 
-router.post('/upload', async (req, res) => { // Ruta para subir imagenes 
+router.post('/upload/', async (req, res) => { // Ruta para subir imagenes 
     //console.log(req.file); Imprime en consola el Json con los datos de a imagen subida 
     const image = new Image();
     image.title = req.body.title; // Recibe el titulo de la imagen
     image.description = req.body.description;  // Recibe la descripcion de la imagen
     image.filename = req.file.filename; // Recibe nombre de la imagen
-    image.path = '/img/uploads' + req.file.filename; // Recibe ruta de la imagen
+    image.path = '/img/uploads/' + req.file.filename; // Recibe ruta de la imagen
     image.originalname = req.file.originalname;
     image.mimetype = req.file.mimetype;
     image.size = req.file.size;
