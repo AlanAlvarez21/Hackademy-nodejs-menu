@@ -22,7 +22,7 @@
                 <!-- Utiliza el método fadeIn de animate.css -->
                 <div class="card animated fadeIn">
                     <!-- Se pide la direccion de la imagen y la imprime -->
-                    <img src="<%= image.path %>" class="card-img-top" alt="<%= image.filename %>">
+                    <img src="<%= image.imageURL %>" class="card-img-top" alt="<%= image.filename %>">
                     <div class="card-body">
                         <!-- Dentro de la imagen que se está iterando se pide la propiedad titulo y description-->
                         <h6 class="card-title"><%= image.title %></h6>
@@ -45,7 +45,7 @@
             <div class="card-columns">
                 <% images.forEach(function(image) { %>
                 <div class="card animated fadeInDown">
-                    <img src="<%= image.path %>" class="card-img" alt="<%= image.filename %>">
+                    <img src="<%= image.imageURL %>" class="card-img" alt="<%= image.filename %>">
                 </div>
                 <% }) %>
             </div>
