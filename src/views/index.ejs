@@ -5,15 +5,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>Image </title>
 <!-- -->
-    <%- include("partials/head") %>
+<%- include("partials/head") %>
 </head>
 
 <body>
 <!-- -->
+<%- include("partials/navigation") %>
 
-    <%- include("partials/navigation") %>
+<style>
+   body {
+      background: #fff;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 70vhS;
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+
+    .swiper-slide {
+      background-position: center;
+      background-size: cover;
+      width: 300px;
+      height: 500px;
+
+    }
+</style>
+   
+<!-- Imprime un slider de imagenes -->
+   
+<!-- Slider main container -->      
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+        <% images.forEach(function(image) { %>
+            <img src="<%= image.imageURL %>" alt="" class="swiper-slide ">
+        <% }) %>
+        ... 
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
 <!-- Imprime una matriz con el arreglo de imagenes  estilo card-colums de bootstrap -->
     <div class="container p-4">
         <div class="row">
@@ -51,6 +91,31 @@
             </div>
         </div>
     </div>
+
+
+        <!-- SCRIP SWIPER -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.0/swiper-bundle.min.js" integrity="sha512-VfcksjYXPZW36rsAGxeRGdB0Kp/htJF9jY5nlofHtRtswIB+scY9sbCJ5FdpdqceRRkpFfHZ3a9AHuoL4zjG5Q==" crossorigin="anonymous"></script>
+
+    
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+      effect: 'coverflow',
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    });
+    </script>
+
 
 </body>
 
