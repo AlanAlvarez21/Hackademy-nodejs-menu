@@ -1,8 +1,8 @@
 const { Router } = require('express'); // Se con figura el router que se importara
 const router = Router(); // Guarda la información en un objecto llamado router
-
-const Image = require('../models/Image');
-
+const { unlink } = require('fs-extra');
+const Image = require('../models/Image'); // Importa el modelo de imagenes 
+const path = require('path');
 
 router.get('/', async (req, res) => {
     const images = await Image.find();
@@ -15,8 +15,11 @@ router.get('/upload/', (req, res) => { // Ruta ver imagenes imagenes
     res.render('upload');
 });
 
-router.get('/image/:id', (req, res) => { // Ruta ver una determinada imagen 
-    res.send('Profile Image');
+router.get('/image/:id', async (req, res) => { // Ruta ver una determinada imagen 
+    const { id } = req.params;  // Se obtiene el id de la imagen 
+    const image = await Image.findById(id); // Busca el archivo correspondiente al id 
+    console.log(image);
+    res.render('profile', { image });
 });
 
 router.post('/upload/', async (req, res) => { // Ruta para subir imagenes 
@@ -35,12 +38,12 @@ router.post('/upload/', async (req, res) => { // Ruta para subir imagenes
     res.redirect('/');
 });
 
-router.get('/image/:id/delete', (req, res) => { // Ruta para eliminar imagenes 
-    res.send('Image deleted');
+router.get('/image/:id/delete', async (req, res) => { // Ruta para eliminar imagenes 
+    const { id } = req.params; // Se obtiene el id de la imagen
+    const image =  await Image.findByIdAndDelete(id); // Busca el id y elimina archivo relacionado 
+    await unlink(path.resolve('./src/public' + image.path)); // Elimina la imagen en base a su ruta 
+    res.redirect('/');
 });
-
-
-
 
 module.exports = router; // Exporta el objeto router 
 
