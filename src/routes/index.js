@@ -20,8 +20,10 @@ router.get('/', async (req, res) => {
 });
 
 
-router.get('/upload/', (req, res) => { // Ruta ver imagenes imagenes 
-    res.render('upload');
+router.get('/upload/', async (req, res) => { // Ruta ver imagenes imagenes 
+    const images = await Image.find();
+    console.log(images);             // Imprime el objeto con el arreglo de la base de datos 
+    res.render('upload', { images });  
 });
 
 router.get('/image/:id', async (req, res) => { // Ruta ver una determinada imagen 
