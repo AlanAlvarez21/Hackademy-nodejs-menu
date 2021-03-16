@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
 const multer = require('multer');
+const favicon = require('serve-favicon');
 const { v4: uuidv4 } = require('uuid');
 const { format } = require('timeago.js')
 
@@ -28,7 +29,7 @@ const storage = multer.diskStorage({
     }
 }) 
 app.use(multer({storage: storage}).single('image')); // Configura el directorio donde multer va a guardar imagenes 
-
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 //Global Variables
 app.use((req,res,next) => {
