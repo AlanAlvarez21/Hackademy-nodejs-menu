@@ -9,7 +9,7 @@
     <%- include("partials/head") -%>
 </head>
 
-<body>
+<tbody>
     <%- include("partials/navigation") %>
     <div class="row">
 
@@ -64,7 +64,6 @@
                         <th>Operations</th>
                     </tr>
                 </thead>
-                <tbody>
                     <% images.forEach(function(image) { %>
                         <tr>
                             <td><%= image.title %></td> 
@@ -80,10 +79,9 @@
                             </td>
                     <% }) %>
                     </tr>
-                </tbody>
             </table>
         </div>
 </div>
 
-</body>
+</tbody>
 </html>

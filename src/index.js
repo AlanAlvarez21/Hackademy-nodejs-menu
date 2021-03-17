@@ -10,7 +10,8 @@ const { format } = require('timeago.js')
 // Initializations 
 const app = express();
 require('./database'); // Inicializa 
-const postsRoutes = require('./routes/api/posts');
+const postsRoutes = require('./routes/api/images');
+
 
 
 // Settings
@@ -41,7 +42,7 @@ app.use((req,res,next) => {
 
 //Routes
 app.use(require('./routes/index'));
-app.use('/api/posts', postsRoutes);
+app.use('/api/images', postsRoutes);
 
 
 //Static Files
