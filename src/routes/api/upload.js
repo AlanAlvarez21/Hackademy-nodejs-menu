@@ -1,10 +1,10 @@
 const { Router, response } = require('express'); // Se con figura el router que se importara
 const router = Router(); // Guarda la información en un objecto llamado router
 const { unlink } = require('fs-extra');
-const Image = require('../models/Image'); // Importa el modelo de imagenes 
+const Image = require('../../../models/Image'); // Importa el modelo de imagenes 
 const path = require('path');
 const cloudinary = require('cloudinary');
-const { CLOUD_NAME, API_KEY, API_SECRET } = require('../config');
+const { CLOUD_NAME, API_KEY, API_SECRET } = require('../../config');
 
 
 //Se configuran las Keys para conectar a cloudinary con variables de entorno 

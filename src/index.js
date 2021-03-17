@@ -10,6 +10,7 @@ const { format } = require('timeago.js')
 // Initializations 
 const app = express();
 require('./database'); // Inicializa 
+const postsRoutes = require('./routes/api/posts');
 
 
 // Settings
@@ -19,6 +20,7 @@ app.set('view engine', 'ejs'); // Se configura ejs con el render engine
 
 
 //Middlewares 
+app.use(express.json());
 app.use(morgan('dev')); // Imprime en consola las peticiones que se le hace al servidor 
 app.use(express.urlencoded({extended: false}));
 const storage = multer.diskStorage({
@@ -39,6 +41,7 @@ app.use((req,res,next) => {
 
 //Routes
 app.use(require('./routes/index'));
+app.use('/api/posts', postsRoutes);
 
 
 //Static Files
