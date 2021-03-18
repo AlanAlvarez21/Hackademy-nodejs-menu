@@ -72,6 +72,9 @@ h6{
     font-weight: 500;
     color: var(--white);
 }
+p{
+    font-size: 16px;
+}
 .container{
     max-width:  1170px;
     margin: auto;
@@ -93,6 +96,40 @@ h6{
 .min-vh-100{
     min-height: 100vh;
 }
+
+.sec-padding{
+    padding: 160px 0;
+}
+/* -----------------
+Section title start
+--------------*/
+.section-title{
+    width: 100%;
+    padding:0 15px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.section-title h2{
+    font-size: 50px;
+    text-transform: capitalize;
+ }
+
+.section-title h2::before{
+    content: attr(data-title);
+    display: block;
+    font-size: 24px;
+    color: var(--main-color);
+    font-family: var(--cursive-font);
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+/* -----------------
+Section title end
+--------------*/
+
+
+
 /* -----------------
 Buttons start
 --------------*/
@@ -137,6 +174,16 @@ Animations keyframes start
         transform: scale(1.1);    
     }
 }
+
+
+@keyframes spin01{
+    0%{
+        transform: rotate(0deg);
+    }100%{
+        transform: rotate(360deg);    
+    }
+}
+
 
 /* -----------------
 Animations keyframes end
@@ -315,6 +362,7 @@ Home Section start
 .home-text h1{
     font-family: var(--cursive-font);
     font-size: 60px;
+    line-height: 75px;
     margin: 0 0 5px;
 }
 .home-text p{
@@ -323,3 +371,157 @@ Home Section start
 /* -----------------
 Home section ends
 --------------*/
+
+/* -----------------
+About Sections start 
+--------------*/
+
+.about-section{
+    background-color: var(--dark);
+}
+.about-text,
+.about-img{
+    width: 50%;
+    padding: 0 15px;
+}
+.about-text h3{
+    font-size: 15px;
+    text-transform: capitalize;
+    margin:0 0 15px;
+}
+.about-text p{
+    margin: 0 0 15px;
+}
+
+.about-text .btn{
+    margin: 15px 0 0;
+}
+
+.about-img img{
+    width:  100%;
+    border-radius:  10px;
+}
+
+.about-img .img-box{
+    position: relative;
+}
+
+.about-img .img-box::before{
+    content: '';
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    border:3px solid var(--main-color);
+    left: calc(50% - 50px);
+    top: calc(50% - 50px);
+    animation: spin01 10s linear infinite;
+}
+
+.about-img .img-box h3{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    max-width: 250px;
+    text-align: center;
+    transform: translate(-50%,-50%);
+    font-size: 30px;
+    font-family: var(--cursive-font);
+    color: var(--dark);
+    font-weight: bold;
+    text-transform: capitalize;
+}
+/* -----------------
+About Sections start 
+--------------*/
+
+
+/* -----------------
+Menu Section start 
+--------------*/
+.menu-section{
+    background-color: var(--dark);
+    padding-bottom: 60px;
+}
+.menu-section .section-title{
+    margin-bottom: 40px;
+}
+.menu-tabs{
+    padding:0 15px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.menu-tab-item{
+    font-size: 18px;
+    font-family: inherit;
+    text-transform: capitalize;
+    border:none;
+    background-color: transparent;
+    font-weight: 500;
+    color: var(--white);
+    cursor: pointer;
+    margin:0 10px 10px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.menu-tab-item.active{
+    color: var(--main-color);
+}
+/*
+.menu-tab-content{
+    display: none;
+} */
+.menu-tab-content.activate{
+    display: flex;
+}
+.menu-item{
+    width: 50%;
+    padding:20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+.menu-item::after{
+    content: '';
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    border-bottom:2px dashed var(--dark-light);
+}
+/*
+.menu-item:nth-last-of-type(2)::after,
+.menu-item:nth-last-of-type(1)::after{
+    border:none;
+}*/
+.menu-item-title{
+    display: flex;
+    align-items: center;
+    max-width: calc(100% - 80px);
+}
+.menu-item-title h3{
+    font-size: 16px;
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+
+}
+.menu-item:hover .menu-item-title h3{
+    color: var(--main-color);
+}
+.menu-item-title img{
+    max-width: 100px;
+    margin-right: 15px;
+}
+.menu-item-price{
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--main-color);
+    transition: color 0.3s ease;
+
+}
+.menu-item:hover .menu-item-price{
+    color: var(--white);
+}

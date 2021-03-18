@@ -1,3 +1,4 @@
+
 /*----------------------toggle navbar-------------------------------*/
 const navToggler = document.querySelector(".nav-toggler");
 navToggler.addEventListener("click", toggleNav);
@@ -25,4 +26,21 @@ window.addEventListener("scroll", function (){
 
     }
 
+});
+
+/*----------------------Menu tabs-------------------------------*/
+const menuTabs = document.querySelector(".menu-tabs");
+ 
+menuTabs.addEventListener("click", function(e){
+ if(e.target.classList.contains("menu-tab-item") && !e.target.classList.contains("active")){
+    const target = e.target.getAttribute("data-target");
+    console.log(target);
+    
+    menuTabs.querySelector(".active").classList.remove("active");
+    e.target.classList.add("active");
+    const menuSection = document.querySelector(".menu-section");
+    menuSection.querySelector(".menu-tab-content.active").classList.remove("active");
+    menuSection.querySelector(target).classList.add("active");
+ 
+ }
 });
