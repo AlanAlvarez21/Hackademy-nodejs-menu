@@ -1,6 +1,7 @@
 # Hackademy-nodejs-menu
 Food Menu builded with nodejs/express and mongoDB, all the image are saved into cloudinary server
 
+
 Deploy in Heroku:
 https://sleepy-temple-98972.herokuapp.com/
 
@@ -54,5 +55,4 @@ $ heroku open
 
 
 - [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
 
