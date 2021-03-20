@@ -55,7 +55,7 @@ The Image Object Json:
 ## Running Locally
 
 ```sh
-$ git clonehttps://github.com/AlanAlvarez21/Hackademy-nodejs-menu.git # or clone your own fork
+$ git clone https://github.com/AlanAlvarez21/Hackademy-nodejs-menu.git # or clone your own fork
 $ cd node-js-getting-started
 $ npm install
 $ npm start
