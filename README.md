@@ -48,8 +48,8 @@ The Image Object Json:
             "imageURL": "http://res.cloudinary.com/dssrbmpy2/image/upload/v1616211817/nqzvinb89dhd8c6binza.png",
             "public_id": "nqzvinb89dhd8c6binza",
             "__v": 0
-        }
-
+        }]
+}
 ```
 
 ## Running Locally
