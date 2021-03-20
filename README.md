@@ -1,6 +1,22 @@
 # Hackademy-nodejs-menu
 Food Menu builded with nodejs/express and mongoDB
 
+Deploy in Heroku:
+https://sleepy-temple-98972.herokuapp.com/
+
+To see the control form for product manage:
+https://sleepy-temple-98972.herokuapp.com/upload
+
+
+
+## Api endpoints
+
+```sh
+$ https://sleepy-temple-98972.herokuapp.com/
+```
+
+
+
 
 ## Running Locally
 
