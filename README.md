@@ -1,5 +1,5 @@
 # Hackademy-nodejs-menu
-Food Menu builded with nodejs/express and mongoDB
+Food Menu builded with nodejs/express and mongoDB, all the image are saved into cloudinary server
 
 Deploy in Heroku:
 https://sleepy-temple-98972.herokuapp.com/
@@ -8,22 +8,21 @@ To see the control form for product manage:
 https://sleepy-temple-98972.herokuapp.com/upload
 
 
-
 ## Api endpoints
 
-GET all Images 
+GET all Images: 
 ```sh
 $ https://sleepy-temple-98972.herokuapp.com/api/images
 ```
-GET a specific image 
+GET a specific image: 
 ```sh
 $ https://sleepy-temple-98972.herokuapp.com/api/images/:id
 ```
-POST an image 
+POST an image: 
 ```sh
 $ https://sleepy-temple-98972.herokuapp.com/api/images/upload
 ```
-DELETE an image 
+DELETE an image: 
 ```sh
 $ https://sleepy-temple-98972.herokuapp.com/api/images/delete/:id
 ```
@@ -37,6 +36,8 @@ $ cd node-js-getting-started
 $ npm install
 $ npm start
 ```
+
+Then you must Set up you r api keys for mongoDB and cloudinary
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
