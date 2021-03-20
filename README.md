@@ -1,5 +1,5 @@
 # Hackademy-nodejs-menu
-Food Menu builded with nodejs/express and mongoDB, all the image are saved into cloudinary server
+Food Menu builded with nodejs/express and using mongoDB in Atlas cluster, all the image are saved into cloudinary server
 
 
 Deploy in Heroku:
@@ -9,7 +9,7 @@ To see the control form for product manage:
 https://sleepy-temple-98972.herokuapp.com/upload
 
 
-## Api endpoints
+## API Endpoints
 
 GET all Images: 
 ```sh
@@ -72,10 +72,3 @@ $ heroku create
 $ git push heroku main
 $ heroku open
 ```
-
-
-## Documentation
-
-
-- [Getting Started on Heroku with Node.js](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-
