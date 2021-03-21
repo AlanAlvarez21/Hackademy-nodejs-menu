@@ -1,5 +1,5 @@
 # Hackademy-nodejs-menu
-Food Menu builded with nodejs/express and using mongoDB in Atlas cluster, all the image are saved into cloudinary server
+Food Menu builded with nodejs/express and using mongoDB in db Atlas cluster, all the image are saved into cloudinary server
 
 
 Deploy in Heroku:
