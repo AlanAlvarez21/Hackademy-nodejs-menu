@@ -13,19 +13,19 @@ https://sleepy-temple-98972.herokuapp.com/upload
 
 GET all Images: 
 ```sh
-$ https://sleepy-temple-98972.herokuapp.com/api/images
+ https://sleepy-temple-98972.herokuapp.com/api/images
 ```
 GET a specific image: 
 ```sh
-$ https://sleepy-temple-98972.herokuapp.com/api/images/:id
+ https://sleepy-temple-98972.herokuapp.com/api/images/:id
 ```
 POST an image: 
 ```sh
-$ https://sleepy-temple-98972.herokuapp.com/api/images/upload
+ https://sleepy-temple-98972.herokuapp.com/api/images/upload
 ```
 DELETE an image: 
 ```sh
-$ https://sleepy-temple-98972.herokuapp.com/api/images/delete/:id
+ https://sleepy-temple-98972.herokuapp.com/api/images/delete/:id
 ```
 
 The Image Object Json:
