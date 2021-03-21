@@ -56,12 +56,12 @@ The Image Object Json:
 
 ```sh
 $ git clone https://github.com/AlanAlvarez21/Hackademy-nodejs-menu.git # or clone your own fork
-$ cd node-js-getting-started
+$ cd Hackademy-nodejs-menu
 $ npm install
 $ npm start
 ```
 
-Then you must Set up you r api keys for mongoDB and cloudinary
+Then you must Set up your api keys for mongoDB and cloudinary
 
 Your app should now be running on [localhost:5000](http://localhost:5000/).
 
