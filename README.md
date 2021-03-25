@@ -63,7 +63,7 @@ $ npm start
 
 Then you must Set up your api keys for mongoDB and cloudinary
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+Your app should now be running on [localhost:3000](http://localhost:3000/).
 
 ## Deploying to Heroku
 
