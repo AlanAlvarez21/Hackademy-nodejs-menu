@@ -1,128 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <title>Image </title>
-<!-- -->
-<%- include("partials/head") %>
+  <title>Menu - Restaurant</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/font-awesome.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <%- include("partials/head") -%>
+  
 </head>
-
 <body>
-<!-- -->
-<%- include("partials/navigation") %>
 
-<style>
-   body {
-      background: #fff;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #000;
-      margin: 0;
-      padding: 0;
-    }
-
-    .swiper-container {
-      width: 100%;
-      height: 70vhS;
-      padding-top: 50px;
-      padding-bottom: 50px;
-    }
-
-    .swiper-slide {
-      background-position: center;
-      background-size: cover;
-      width: 600px;
-      height: 350px;
-
-    }
-</style>
-   
-<!-- Imprime un slider de imagenes -->
-   
-<!-- Slider main container -->      
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-        <% images.forEach(function(image) { %>
-            <img src="<%= image.imageURL %>" alt="" class="swiper-slide ">
-        <% }) %>
-        ... 
-        
+  <!-- header start -->
+  <header class="header">
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="logo">
+          <a href="#"><img src="img/logo.png" alt="logo"></a>
+        </div>
+        <button type="button" class="nav-toggler">
+          <span></span>
+        </button>
+        <nav class="nav">
+          <ul>
+            <li class="nav-item"><a href="#home">home</a></li>
+            <li class="nav-item"><a href="#about">about</a></li>
+            <li class="nav-item"><a href="#our-menu">our menu</a></li>
+            <li class="nav-item"><a href="#testimonials">testimonials</a></li>
+            <li class="nav-item"><a href="#team">team</a></li>
+            <li class="nav-item"><a href="#footer">contact us</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
-    <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
-  </div>
-<!-- Imprime una matriz con el arreglo de imagenes  estilo card-colums de bootstrap -->
-    <div class="container p-4">
-        <div class="row">
-            <div class="card-columns">
-                <% images.forEach(function(image) { %>
-                <!-- Utiliza el método fadeIn de animate.css -->
-                <div class="card animated fadeIn">
-                    <!-- Se pide la direccion de la imagen y la imprime -->
-                    <img src="<%= image.imageURL %>" class="card-img-top" alt="<%= image.filename %>">
-                    <div class="card-body">
-                        <!-- Dentro de la imagen que se está iterando se pide la propiedad titulo y description-->
-                        <h6 class="card-title"><%= image.title %></h6>
-                        <p class="card-text"><%= image.description %></p>
-                        <!-- Se imprime la propiedad created_at la cúal imprime la fecha de creación, y se le da formato -->
-                        <p class="card-text"><%= format(image.created_at) %></p>
-                        <!-- Se colocá un boton para ver un formulario de la imagen-->
+  </header>
+  <!-- header end -->
+
+  <!-- home section start -->
+  <section class="home-section" id="home">
+    <div class="home-bg"></div>
+    <div class="container">
+      <div class="row min-vh-100 align-items-center">
+        <div class="home-text"  >
+          <h1>Hack-Burguers & Pizza</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a href="#our-menu" class="btn btn-default">our menu</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- home section end -->
+
+
+  <!-- menu section start -->
+  <section class="menu-section sec-padding" id="our-menu">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2 data-title="order now" >menu</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="menu-tabs" >
+          <button type="button"  class="menu-tab-item active btn-imagen2"  data-target="#hamburguer"></button>
+          <button type="button" class="menu-tab-item btn-imagen1" data-target="#pizza"></button>
+          <button type="button" class="menu-tab-item btn-imagen3" data-target="#drinks"></button>
+          <button type="button" class="menu-tab-item btn-imagen4" data-target="#desserts"></button>
+        </div>
+      </div>
+      <div class="row menu-tab-content active" id="hamburguer">
+        <% images.forEach(function(image) { %>
+        <% if(image.category === 'hamburguer') { %>
+            <div class="menu-item"> 
+                <div class="menu-item-title"> 
+                    <img src="<%= image.imageURL %>" alt="<%= image.filename %>">
+                    <a href="/image/<%= image._id %>" class="btn" alt="menu item thumbnail">
+                        <h3><%= image.title %></h3>
+                     </a>                    </div>
+                            <div class="menu-item-price">
+                                $<%= image.price %>
+                            </div>
+                        </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+              
+
+            <div class="row menu-tab-content" id="pizza">
+            <% images.forEach(function(image) { %>
+            <% if(image.category === 'pizza') { %>
+                <div class="menu-item"> 
+                    <div class="menu-item-title"> 
+                        <img src="<%= image.imageURL %>" alt="<%= image.filename %>">
                         <a href="/image/<%= image._id %>" class="btn btn-primary">
-                           View 
-                        </a>
+                            <h3><%= image.title %></h3>
+                        </a>                    </div>
+                    <div class="menu-item-price">
+                      $<%= image.price %>
                     </div>
                 </div>
-                <% }) %>
+                <% } %>
+            <% }) %>
             </div>
-        </div>
-    </div>
-    
-<!-- Imprime imagenes solamente sin ninguna información -->
-    <div class="container p-4">
-        <div class="row">
-            <div class="card-columns">
-                <% images.forEach(function(image) { %>
-                <div class="card animated fadeInDown">
-                    <img src="<%= image.imageURL %>" class="card-img" alt="<%= image.filename %>">
+
+
+            <div class="row menu-tab-content " id="drinks">
+            <% images.forEach(function(image) { %>
+            <% if(image.category === 'drinks') { %>
+                <div class="menu-item"> 
+                    <div class="menu-item-title"> 
+                        <img src="<%= image.imageURL %>" alt="<%= image.filename %>">
+                        <a href="/image/<%= image._id %>" class="btn btn-primary">
+                            <h3><%= image.title %></h3>
+                        </a>                    </div>
+                    <div class="menu-item-price">
+                      $<%= image.price %>
+                    </div>
                 </div>
-                <% }) %>
+                <% } %>
+            <% }) %>
             </div>
+
+            <div class="row menu-tab-content " id="desserts">
+            <% images.forEach(function(image) { %>
+            <% if(image.category === 'desserts') { %>
+                <div class="menu-item"> 
+                    <div class="menu-item-title"> 
+                        <img src="<%= image.imageURL %>" alt="<%= image.filename %>">
+                        <a href="/image/<%= image._id %>" class="btn btn-primary">
+                            <h3><%= image.title %></h3>
+                        </a>                    </div>
+                    <div class="menu-item-price">
+                      $<%= image.price %>
+                    </div>
+                </div>
+            <% } %>
+            <% }) %>
+            </div>
+                </div>
+              </section>
+    <!-- menu  section end -->
+
+
+  <!-- about section start -->
+  <section class="about-section sec-padding" id="about">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2 data-title="our story" >about us</h2>
         </div>
+      </div>
+      <div class="row">
+        <div class="about-text" >
+           <h3>To Hack-Burguers & Pizza </h3>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+           <a href="#our-menu" class="btn btn-default">check our menu</a>
+        </div>
+        <div class="about-img" >
+           <div class="img-box">
+             <img src="img/about-img.jpg" alt="about img">
+           </div>
+        </div>
+      </div>
     </div>
+  </section>
+  <!-- about section end -->
+  
+  <!-- testimonials section start -->
+  <section class="testimonials-section sec-padding" id="testimonials">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2 data-title="testimonials" >some feedbacks</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="testi-item" >
+          <div class="testi-author">
+             <div class="testi-author-name">
+               <h3>Alan Daniel</h3>
+               <span>food specialist</span>
+             </div>
+             <div class="testi-author-img">
+               <img src="img/testimonials/1.jpg" alt="testi author img">
+             </div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="testi-item" >
+          <div class="testi-author">
+             <div class="testi-author-name">
+               <h3>Alan Daniel</h3>
+               <span>food specialist</span>
+             </div>
+             <div class="testi-author-img">
+               <img src="img/testimonials/2.jpg" alt="testi author img">
+             </div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+        <div class="testi-item" >
+          <div class="testi-author">
+             <div class="testi-author-name">
+               <h3>Alan Daniel</h3>
+               <span>food specialist</span>
+             </div>
+             <div class="testi-author-img">
+               <img src="img/testimonials/3.jpg" alt="testi author img">
+             </div>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <div class="ratings">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- testimonials section end -->
 
 
-    
-    <!-- gallery section ends -->
-    
 
-        <!-- SCRIP SWIPER -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.0/swiper-bundle.min.js" integrity="sha512-VfcksjYXPZW36rsAGxeRGdB0Kp/htJF9jY5nlofHtRtswIB+scY9sbCJ5FdpdqceRRkpFfHZ3a9AHuoL4zjG5Q==" crossorigin="anonymous"></script>
+  <!-- slider start -->
+<!-- 
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+      <% images.forEach(function(image) { %>
+          <img src="<%= image.imageURL %>" class="swiper-slide ">
+      <% }) %>      
+  </div>
+  Add Pagination -->
+  <section class="team-section sec-padding">
 
-    
-    <script>
-    var swiper = new Swiper('.swiper-container', {
-      effect: 'coverflow',
-      grabCursor: true,
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      coverflowEffect: {
-        rotate: 50,
-        stretch: 0,
-        depth: 100,
-        modifier: 1,
-        slideShadows: true,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-      },
-    });
-    </script>
+<!-- Imprime una matriz con el arreglo de imagenes  estilo card-colums de bootstrap -->
+  <div class="container p-4">
+    <div class="row">
+      <div class="section-title">
+        <h2 data-title="order now" >our best recomendations</h2>
+      </div>
+    </div>
+      <div class="row">
+          <div class="card-columns">
+              <% images.forEach(function(image) { %>
+                <% if(image.price === '20.00') { %>
+
+              <!-- Utiliza el método fadeIn de animate.css -->
+              <div class="card animated fadeIn">
+                  <!-- Se pide la direccion de la imagen y la imprime -->
+                  <img src="<%= image.imageURL %>" class="card-img-top" alt="<%= image.filename %>">
+                  <div class="card-body">
+                      <!-- Dentro de la imagen que se está iterando se pide la propiedad titulo y description-->
+                      <h6 class="card-title"><%= image.title %></h6>
+                      <p class="card-text"><%= image.description %></p>
+                      <!-- Se imprime la propiedad created_at la cúal imprime la fecha de creación, y se le da formato -->
+                      <!-- Se colocá un boton para ver un formulario de la imagen-->
+                      <div class="ratings">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                      </div>
+                      <a href="/image/<%= image._id %>" class="btn btn-primary">
+                         View 
+                      </a>
+                  </div>
+              </div>
+              <% } %>
+              <% }) %>
+          </div>
+      </div>
+  </div>
+</section>
 
 
+
+
+  <!-- slider end -->
+
+
+  <!-- team section start -->
+  <section class="team-section sec-padding" id="team">
+    <div class="container">
+      <div class="row">
+        <div class="section-title">
+          <h2 data-title="team" >our chefs</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="team-item" >
+          <img src="img/team/1.jpg" alt="team item">
+          <div class="team-item-info">
+            <h3>Alan Daniel</h3>
+            <p>head chef</p>
+          </div>
+        </div>
+        <div class="team-item" >
+          <img src="img/team/2.jpg" alt="team item">
+          <div class="team-item-info">
+            <h3>lan Daniel</h3>
+            <p>head chef</p>
+          </div>
+        </div>
+        <div class="team-item" >
+          <img src="img/team/3.jpg" alt="team item">
+          <div class="team-item-info">
+            <h3>lan Daniel</h3>
+            <p>head chef</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- team section end -->
+
+  <!-- footer start -->
+  <footer class="footer" id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-item" >
+          <h3>our location</h3>
+          <p>xyz Gdl, Jalisco, <br>Taller Programación Hackademy</p>
+        </div>
+        <div class="footer-item" >
+          <h3>opening hours</h3>
+          <p>Monday to Sunday <br> 9:00 AM - 10:00 PM </p>
+        </div>
+        <div class="footer-item" >
+          <h3>contact us</h3>
+          <p>3311954194</p>
+          <p>alandanielalvarez0000@gmail.com</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="copyright">
+          &copy; 2021 - Alan Alvarez
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer end -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/6.5.0/swiper-bundle.min.js" integrity="sha512-VfcksjYXPZW36rsAGxeRGdB0Kp/htJF9jY5nlofHtRtswIB+scY9sbCJ5FdpdqceRRkpFfHZ3a9AHuoL4zjG5Q==" crossorigin="anonymous"></script>
+  <script src="js/aos.js"></script> 
+<script src="js/script.js"></script>
 </body>
-
 </html>
